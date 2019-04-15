@@ -1,18 +1,19 @@
 package com.teamify.entities;
 
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Data
 @Entity
 public class Skill {
 
     @Id
-    private int skillId;
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private int id;
 
     private String skill;
 }
