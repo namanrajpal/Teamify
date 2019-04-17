@@ -61,11 +61,8 @@ public class MockDataLoader {
 
     public void loadProjects()
     {
-        List<University> universities = new ArrayList<>();
-        universityRepository.findAll().forEach(universities::add);
-        Random random = new Random();
-
-        University university = universities.get(random.nextInt(10)%2);
+/*
+        University university = mockUniversiies.get(0);
         Project project1 = new Project(12345,
                 "Mock Project 1",
                 "Mo2ck Daaescription A",
@@ -80,40 +77,7 @@ public class MockDataLoader {
 
         mockProjects.add(project1);
         mockProjects.add(project2);
-
-
-        mockProjects.add(new Project(12346,
-                "Mock Project 2",
-                "Moc2k Descsdfription B",
-                new Date(Calendar.getInstance().getTime().getTime()),
-                universities.get(random.nextInt(5)%2)));
-        mockProjects.add(new Project(12348,
-                "Mock Project 4",
-                "Mocasdk Dsdfescription D",
-                new Date(Calendar.getInstance().getTime().getTime()),
-                universities.get(random.nextInt(5)%2)));
-        mockProjects.add(new Project(12349,
-                "Mock Project 5",
-                "Mocaak Description E",
-                new Date(Calendar.getInstance().getTime().getTime()),
-                universities.get(random.nextInt(5)%2)));
-        mockProjects.add(new Project(12350,
-                "Mock Project 6",
-                "Mocffk Description F",
-                new Date(Calendar.getInstance().getTime().getTime()),
-                universities.get(random.nextInt(5)%2)));
-        mockProjects.add(new Project(12351,
-                "Mock Project 7",
-                "Mockggggg Description G",
-                new Date(Calendar.getInstance().getTime().getTime()),
-                universities.get(random.nextInt(5)%2)));
-        projectRepository.saveAll(getMockProjects());
-
-        //Set<Project> projects = new HashSet<>();
-        //projects.add(project1);
-        //projects.add(project2);
-        //university.setProjects(projects);
-
-        projectRepository.saveAll(getMockProjects());
+        university.setProjects(new HashSet<>(mockProjects));
+        universityRepository.save(university);*/
     }
 }

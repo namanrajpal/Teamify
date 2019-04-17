@@ -2,10 +2,8 @@ package com.teamify.entities;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @Entity
@@ -18,4 +16,10 @@ public class User {
     private String fullName;
 
     private String emailAddress;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "projectOwner")
+    private Set<Project> createdProjects;
+
+    @ManyToMany
+    private Set<Skill> userSkills;
 }

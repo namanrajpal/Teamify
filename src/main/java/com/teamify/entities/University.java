@@ -15,14 +15,14 @@ import java.util.Set;
 public class University {
 
     @Id
-    @Column(name = "university_id")
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
 
     private String name;
     private long zipcode;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "university")
     private Set<Project> projects = new HashSet<>();
 
     public University(int id, String name, long zipcode) {

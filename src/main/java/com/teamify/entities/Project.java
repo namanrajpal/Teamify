@@ -16,9 +16,8 @@ import java.util.Set;
 public class Project {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name = "project_id")
-    private long id;
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private int id;
 
     private String title;
 
@@ -26,9 +25,17 @@ public class Project {
 
     private Date created;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "university_id")
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn
     private University university;
-    //private Set<Skill> skillSet = new HashSet<Skill>();
 
+    @ManyToMany
+    private Set<Skill> requiredSkills;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn
+    private User projectOwner;
+
+    /*@ManyToMany
+    private Set<User> collaborators;*/
 }

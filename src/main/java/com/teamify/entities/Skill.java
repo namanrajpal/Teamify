@@ -2,10 +2,8 @@ package com.teamify.entities;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @Entity
@@ -16,4 +14,10 @@ public class Skill {
     private int id;
 
     private String skill;
+
+    @ManyToMany (mappedBy = "requiredSkills")
+    private Set<Project> projects;
+
+    @ManyToMany(mappedBy = "userSkills")
+    private Set<User> users;
 }
