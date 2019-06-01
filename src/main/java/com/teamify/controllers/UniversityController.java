@@ -3,9 +3,8 @@ package com.teamify.controllers;
 import com.teamify.entities.University;
 import com.teamify.services.UniversityService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,4 +19,17 @@ public class UniversityController {
     public List<University> getAllUniversities() {
         return  universityService.getAllUniversities();
     }
+
+    @GetMapping(value = "/{id}", produces = "application/json")
+    public ResponseEntity<University> getUniversity(@PathVariable int id) {
+        return universityService.findUniversityById(id)
+                .map( university -> ResponseEntity.ok().body(university)) //200 OK
+                .orElseGet( () -> ResponseEntity.notFound().build()); //404 not found
+    }
+
+    @PostMapping("/")
+    public ResponseEntity<University> createUniversity(@RequestBody University university) {
+        return ResponseEntity.ok(universityService.create(university));
+    }
+
 }
