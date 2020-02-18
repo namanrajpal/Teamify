@@ -5,8 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.sql.Date;
-import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -19,8 +19,10 @@ public class Project {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
 
+    @NotNull
     private String title;
 
+    @NotNull
     private String description;
 
     private Date created;

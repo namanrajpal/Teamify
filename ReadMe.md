@@ -5,5 +5,14 @@ Put up an Idea/Posting if you want to do a project and looking for potential tea
 Search for relevant projects matching/requiring your skills that you can work on.
 
 
+###IntelliJ Tips
+1. If you are getting IntelliJ errors. Try the following command
+> gradlew bootJar
+
+The above command will pull the dependencies and index them in IntelliJ.
+
+2. To run the application
+> gradlew bootRun
+
 
 

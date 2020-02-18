@@ -5,7 +5,9 @@ import com.teamify.services.UniversityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -29,7 +31,11 @@ public class UniversityController {
 
     @PostMapping("/")
     public ResponseEntity<University> createUniversity(@RequestBody University university) {
-        return ResponseEntity.ok(universityService.create(university));
+        URI uriPath = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(universityService.create(university).getId())
+                .toUri();
+        return ResponseEntity.created(uriPath).build();
     }
 
 }
